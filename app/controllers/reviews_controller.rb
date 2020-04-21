@@ -31,10 +31,6 @@ class ReviewsController < ApplicationController
 
         end
 
-
-
-
-      
     end
 
 
@@ -92,24 +88,17 @@ class ReviewsController < ApplicationController
 
 
     def update
-
     # find the individual review
-
     @review = Review.find(params[:id])
-
-    # update with the new info from the form
-   if  @review.update(form_params)
-
-    # redirect somewhere new
-        redirect_to review_path(@review)
-
-   else
-    render "edit"
-   end
-
-
-
+            # update with the new info from the form
+        if  @review.update(form_params)
+            # redirect somewhere new
+                redirect_to review_path(@review)
+        else
+            render "edit"
+        end
     end
+
 
     def form_params
         params.require(:review).permit(:title, :restaurant, :body, :score, :ambiance, :cuisine, :price, :address)
