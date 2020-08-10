@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_22_013203) do
+ActiveRecord::Schema.define(version: 2020_08_10_224523) do
+
+  create_table "bookmarks", force: :cascade do |t|
+    t.integer "review_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["review_id"], name: "index_bookmarks_on_review_id"
+    t.index ["user_id"], name: "index_bookmarks_on_user_id"
+  end
 
   create_table "comments", force: :cascade do |t|
     t.string "body"
@@ -18,6 +27,7 @@ ActiveRecord::Schema.define(version: 2020_04_22_013203) do
     t.integer "review_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
     t.index ["review_id"], name: "index_comments_on_review_id"
   end
 
@@ -35,6 +45,7 @@ ActiveRecord::Schema.define(version: 2020_04_22_013203) do
     t.text "address"
     t.float "latitude"
     t.float "longitude"
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -46,5 +57,7 @@ ActiveRecord::Schema.define(version: 2020_04_22_013203) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "bookmarks", "reviews"
+  add_foreign_key "bookmarks", "users"
   add_foreign_key "comments", "reviews"
 end

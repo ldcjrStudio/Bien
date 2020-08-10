@@ -27,7 +27,7 @@
 <%# 
             if the session we are in has a user_id, then we can add a review
             if the session doesnt have a user_id, display sign up and login %>
-              <% if session[:user_id].present? %>
+              <% if is_logged_in? %>
 
               <%= @current_user.username %>
                 <%= link_to "Add a review", new_review_path %>
