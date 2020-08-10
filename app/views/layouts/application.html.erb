@@ -24,7 +24,26 @@
             <h2>The best restaurants in the world</h2>
 
             <nav>
-            <%= link_to "Add a review", new_review_path %>
+<%# 
+            if the session we are in has a user_id, then we can add a review
+            if the session doesnt have a user_id, display sign up and login %>
+              <% if session[:user_id].present? %>
+
+              <%= @current_user.username %>
+                <%= link_to "Add a review", new_review_path %>
+
+                <%= link_to "Log out" , session_path, method: :delete %>
+
+              <% else %>
+          <%= link_to "Sign up" , new_user_path %>
+
+          <%= link_to "Log in" ,new_session_path %>
+
+              <% end %>
+           
+
+
+            
 
             </nav>
 
@@ -37,7 +56,7 @@
 </main>
 
     <footer>
-    Copyright 2017 Bien Reviews
+    Copyright 2020 Bien Reviews
     </footer>
   </body>
 </html>

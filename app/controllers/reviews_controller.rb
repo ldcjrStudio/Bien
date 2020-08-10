@@ -7,7 +7,6 @@ class ReviewsController < ApplicationController
         @cuisine = params[:cuisine]
         @location = params[:location]
 
-
         # start with all the reviews
         @reviews = Review.all
 
@@ -15,16 +14,15 @@ class ReviewsController < ApplicationController
         if @price.present?
             @reviews = @reviews.where(price: @price)
         
-        
         end
 
         # filtering by cuisine
-
         if @cuisine.present?
 
             @reviews = @reviews.where(cuisine: @cuisine)
         end
 
+        # filtering by location
         if @location.present?
 
             @reviews = @reviews.near(@location)
@@ -51,13 +49,13 @@ class ReviewsController < ApplicationController
 
     #if it isnt, show the new form
         if @review.save
+        
             redirect_to root_path
 
         else 
             # show the view for new.html.erb
             render "new"
         end
-
 
 
     end
