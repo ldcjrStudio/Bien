@@ -50,6 +50,10 @@ gem "profanity_filter"
 gem "simple_form"
 gem "active_link_to"
 
+gem 'carrierwave', '~> 2.0'
+
+gem "fog-aws"
+
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'

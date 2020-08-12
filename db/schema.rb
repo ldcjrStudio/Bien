@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_10_224523) do
+ActiveRecord::Schema.define(version: 2020_08_12_193601) do
 
   create_table "bookmarks", force: :cascade do |t|
     t.integer "review_id", null: false
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 2020_08_10_224523) do
     t.float "latitude"
     t.float "longitude"
     t.integer "user_id"
+    t.string "photo"
   end
 
   create_table "users", force: :cascade do |t|

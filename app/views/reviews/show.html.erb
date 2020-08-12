@@ -1,5 +1,7 @@
 <% content_for :page_title, @review.title %>
 
+<%= image_tag @review.photo.thumb.url %>
+
 
 <h1><%= @review.title %></h1>
 <h2><%= @review.restaurant %></h2>
@@ -73,7 +75,6 @@ anonymous
     Cuisine: <%= @review.cuisine %>
     </div>
 
-
 <% end %>
 
 <div class="body">
@@ -85,12 +86,16 @@ anonymous
 <%# You can only edit and delete reviews if you are the one who posted it %>
 <% if @review.user == @current_user %>
 
-<div class="actions">
+     <div class="actions">
+        <%# show this link only if the review was submitted less than an hour ago %>
+        <% if @review.created_at > 1.hour.ago %>
 
-<%= link_to "Edit this review", edit_review_path(@review) %>
-<%= link_to "Delete this review", review_path(@review), method: :delete, data: { confirm: "Are you sure??"} %>
+            <%= link_to "Edit this review", edit_review_path(@review) %>
 
-</div>
+        <% end %>
+        <%= link_to "Delete this review", review_path(@review), method: :delete, data: { confirm: "Are you sure??"} %>
+
+    </div>
 
 <% end %>
 
