@@ -53,6 +53,12 @@ gem "active_link_to"
 gem 'carrierwave', '~> 2.0'
 
 gem "fog-aws"
+gem 'activeadmin'
+
+gem 'devise'
+gem 'cancancan'
+gem 'draper'
+gem 'pundit'
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
