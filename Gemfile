@@ -50,7 +50,7 @@ gem "profanity_filter"
 gem "simple_form"
 gem "active_link_to"
 
-gem 'carrierwave', '~> 2.0'
+gem 'carrierwave', '~> 2.1'
 
 gem "fog-aws"
 gem 'activeadmin'
